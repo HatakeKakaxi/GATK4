@@ -1,0 +1,19 @@
+#!/bin/bash
+# a shell script for Mutect2 test
+
+cd /home/cluster/Users/wdy/GATK4
+
+gatk_home=/home/cluster/Users/wdy/GATK4/gatk
+ref_dir=/home/cluster/Storage/reference_sequence
+input_dir=/home/cluster/Storage/intermidiate_data/gatk4/wgs
+output_dir=/home/cluster/Users/lhh/scripts/results
+
+${gatk_home} Mutect2Par  \
+ -R ${ref_dir}/hs37d5.fasta \
+ -I ${input_dir}/case_sort_markdup_applybqsr.bam \
+ -tumor case \
+ -I ${input_dir}/normal_sort_markdup_applybqsr.bam \
+ -normal normal \
+ -max-reads-per-alignment-start 0 \
+ -O ${output_dir}/Mutect2ParTest0314.vcf
+
